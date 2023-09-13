@@ -9,7 +9,9 @@ services:
   db:
     image: postgresql:5.7
     environment:
-        - 'POSTGRES_PASSWORD=Vinithk1234$'
+        image: postgres
+        restart: always
+        user: postgres
   apache:
     image: httpd:2.4
     ports:
