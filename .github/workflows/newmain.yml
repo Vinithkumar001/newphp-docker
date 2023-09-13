@@ -3,7 +3,7 @@ name: Docker Build and Deploy
 on:
   push:
     branches:
-      - new
+      - main
 
 jobs:
   build-and-deploy:
