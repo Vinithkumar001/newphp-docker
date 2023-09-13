@@ -1,32 +1,27 @@
-name: Docker Build and Deploy
+name: Build and Push Docker Image
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust to your main branch name
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Build and push Docker image
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: |
-        docker build -t nginx:latest .
-        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        docker tag nginx:latest vinith01/nginx:latest
-        docker push vinith01/nginx:latest
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Deploy with Docker Compose
-      run: |
-        docker-compose -f docker-compose.yml up -d
+      - name: Build Docker image
+        run: docker build -t nginxlatest .
+        working-directory: ./
 
-    - name: Clean up
-      run: |
-        docker system prune -f
+      - name: Push Docker image
+        run: docker push nginx:latest
