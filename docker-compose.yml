@@ -9,7 +9,7 @@ services:
   db:
     image: postgresql:5.7
     environment:
-        - POSTGRES_PASSWORD:"Vinithk1234$"
+        - POSTGRES_PASSWORD: "Vinithk1234$"
   apache:
     image: httpd:2.4
     ports:
