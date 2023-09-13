@@ -20,7 +20,7 @@ jobs:
       run: |
         docker build -t nginx:latest .
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        docker tag nginx:latest vinith011/nginx:latest
+        docker tag nginx:latest vinith01/nginx:latest
         docker push vinith01/nginx:latest
 
     - name: Deploy with Docker Compose
