@@ -23,6 +23,5 @@ jobs:
         run: docker build -t nginx:latest .
         working-directory: ./
 
-      - name: Push Docker image
-        run: docker push phpapp:11
+
         
