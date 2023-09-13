@@ -24,4 +24,4 @@ jobs:
         working-directory: ./
 
       - name: Push Docker image
-        run: docker push phpapp:11
+        run: docker push php-we
