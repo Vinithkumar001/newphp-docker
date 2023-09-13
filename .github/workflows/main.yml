@@ -18,10 +18,10 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker build -t your-image-name:latest .
+        docker build -t nginx:latest .
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        docker tag your-image-name:latest your-docker-username/your-image-name:latest
-        docker push your-docker-username/your-image-name:latest
+        docker tag nginx:latest vinith011/nginx:latest
+        docker push vinith01/nginx:latest
 
     - name: Deploy with Docker Compose
       run: |
